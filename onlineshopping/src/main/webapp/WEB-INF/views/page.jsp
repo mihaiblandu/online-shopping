@@ -18,72 +18,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Online Shopping - ${title}</title>
 
 <script>
 	window.menu = '${title}';
+	
+	window.contextRoot = '${contextRoot}'
+	
 </script>
-<style>
-.footer {
- position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: red;
-   color: white;
-   text-align: center;
-}
-</style>
+
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
+<!-- Bootstrap Readable Theme -->
+<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+
+<!-- Bootstrap DataTables -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+
+
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
 
-	<!-- Navigation -->
-	<%@include file="./shared/navbar.jsp"%>
+	<div class="wrapper">
 
-	<!-- Page Content -->
-	<!-- Loading the home content -->
-	<c:if test="${userClickHome == true }">
-		<%@include file="home.jsp"%>
-	</c:if>
+		<!-- Navigation -->
+		<%@include file="./shared/navbar.jsp"%>
 
-	<!-- Load only when user clicks about -->
-	<c:if test="${userClickAbout == true }">
-		<%@include file="./shared/about.jsp"%>
-	</c:if>
-	<!-- Load only when user clicks view products -->
-	<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
-		<%@include file="./listProducts.jsp"%>
-	</c:if>
+		<!-- Page Content -->
 
-	<!-- Load only when user clicks contact -->
-	<c:if test="${userClickContact == true }">
-		<%@include file="./contact.jsp"%>
-	</c:if>
+		<div class="content">
+			
+			<!-- Loading the home content -->
+			<c:if test="${userClickHome == true }">
+				<%@include file="home.jsp"%>
+			</c:if>
+
+			<!-- Load only when user clicks about -->
+			<c:if test="${userClickAbout == true }">
+				<%@include file="shared/about.jsp"%>
+			</c:if>
+
+			<!-- Load only when user clicks contact -->
+			<c:if test="${userClickContact == true }">
+				<%@include file="contact.jsp"%>
+			</c:if>
+			
+			<!-- Load only when user clicks contact -->
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
+				<%@include file="listProducts.jsp"%>
+			</c:if>			
+			
+
+		</div>
 
 
-<div>
-	<!-- Footer comes here -->
-	<%@include file="./shared/footer.jsp"%>
+		<!-- Footer comes here -->
+		<%@include file="./shared/footer.jsp"%>
 
-</div>
 
-	<!-- jQuery -->
-	<script src="${js}/jquery.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="${js}/bootstrap.min.js"></script>
+		<!-- jQuery -->
+		<script src="${js}/jquery.js"></script>
 
-	<!-- Myapp JavaScript -->
-	<script src="${js}/myapp.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="${js}/bootstrap.min.js"></script>
+		
+		<!-- DataTable Plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<!-- DataTable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
+		
+		
+		
+		<!-- Self coded javascript -->
+		<script src="${js}/myapp.js"></script>
 
+	</div>
 
 </body>
 
