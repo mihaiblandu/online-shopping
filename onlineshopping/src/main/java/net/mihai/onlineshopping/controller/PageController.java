@@ -1,10 +1,12 @@
 package net.mihai.onlineshopping.controller;
+import org.hibernate.engine.internal.TwoPhaseLoad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import mihai.net.onlineshopping.exception.ProductNotFoundException;
 import net.mihai.shoppingbackend.dao.CategoryDAO;
 import net.mihai.shoppingbackend.dao.ProductDAO;
 import net.mihai.shoppingbackend.dto.Category;
@@ -86,23 +88,38 @@ public class PageController {
 	}	
 	
 	
-//	@RequestMapping(value = "/show/category/{id}/products")
-//	public ModelAndView showCategoryProduct(@PathVariable("id") int id) 
-//	{
-//		ModelAndView mv = new ModelAndView();
-//		Product product = productDAO.get(id);
-//		
-//		
-//		//Update Product view count
-//		product.setViews(product.getViews() + 1);
-//		productDAO.update(product);
-//		
-//		mv.addObject("title", product.getName());
-//		mv.addObject("product", product);
-//		mv.addObject("userClickShowProduct", true);
-//		
-//	return mv;
-//	}
+	/*
+	 * Viewing a single product
+	 * */
+	
+	@RequestMapping(value = "/show/{id}/product") 
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		Product product = productDAO.get(id);
+		if(product == null) throw new  ProductNotFoundException(); 
+		
+		// update the view count
+		product.setViews(product.getViews() + 1);
+		productDAO.update(product);
+		//---------------------------
+		
+		mv.addObject("title", product.getName());
+		mv.addObject("product", product);
+		
+		mv.addObject("userClickShowProduct", true);
+		
+		
+		return mv;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

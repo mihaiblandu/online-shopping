@@ -11,8 +11,8 @@
     http://www.springframework.org/schema/mvc/spring-mvc.xsd    
     
     ">
-
-	<context:component-scan base-package="net.mihai.onlineshopping.controller"/>
+	<context:component-scan base-package="mihai.net.onlineshopping.exception"/>
+	<context:component-scan base-package="net.mihai.onlineshopping"/>
 	<context:component-scan base-package="net.mihai.shoppingbackend"/>
 
 
