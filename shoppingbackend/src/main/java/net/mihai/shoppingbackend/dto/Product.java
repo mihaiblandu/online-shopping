@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product {
@@ -16,16 +21,23 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String code;
+	@NotBlank(message="Please enter a product name!")
 	private String name;
+	@NotBlank(message="Please enter a brand name!")
 	private String brand;
+	@JsonIgnore
+	@NotBlank(message="Please enter a description!")
 	private String description;
 	@Column(name = "unit_price")
+	@Min(value = 1)
 	private double unitPrice;
+	@Min(value = 1, message = "Price can not be less than 1!")
 	private int quantity;
 	@Column(name = "is_active")
 	private boolean active;
 	@Column(name = "category_id")
 	private int categoryId;
+	@JsonIgnore
 	@Column(name = "supplier_id")
 	private int supplierId;
 	private int purchases;
@@ -118,7 +130,6 @@ public class Product {
 	}
 
 	
-	// toString for debugging
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
