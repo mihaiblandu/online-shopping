@@ -55,6 +55,7 @@
 	<div class="wrapper">
 
 		<!-- Navigation -->
+		
 		<%@include file="./shared/navbar.jsp"%>
 
 		<!-- Page Content -->
@@ -103,6 +104,7 @@
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
+		
 
 		<!-- DataTable Plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
@@ -110,7 +112,8 @@
 		<!-- DataTable Bootstrap Script -->
 		<script src="${js}/dataTables.bootstrap.js"></script>
 
-
+		<!-- boot box -->
+		<script src="${js}/bootbox.min.js"></script>
 
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>

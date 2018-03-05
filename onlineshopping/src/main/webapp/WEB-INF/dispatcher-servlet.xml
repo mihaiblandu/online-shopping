@@ -23,6 +23,7 @@
 		<property name="suffix" value=".jsp" />
 		
 	</bean>
+	<!-- exactly  id="multipartResolver" or it will nor work-->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 	
