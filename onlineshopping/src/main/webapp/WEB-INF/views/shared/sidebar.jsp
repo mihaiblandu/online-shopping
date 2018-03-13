@@ -2,7 +2,6 @@
 
 <div class="col-md-3">
 
-<p>test
 </p>
 	<div class="list-group"  >
 		<c:forEach  items="${categories}" var="category" >

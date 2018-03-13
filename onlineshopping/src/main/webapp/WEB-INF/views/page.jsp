@@ -58,7 +58,6 @@
 		
 		<%@include file="./shared/navbar.jsp"%>
 
-		<!-- Page Content -->
 
 		<div class="content">
 
@@ -90,6 +89,11 @@
 			<c:if test="${userClickManageProduct == true}">
 				<%@include file="manageProducts.jsp"%>
 			</c:if>
+			<!-- Load only when user clicks manage product -->
+			<c:if test="${userClicktestit == true}">
+				<%@include file="testit.jsp"%>
+			</c:if>
+			
 
 		</div>
 

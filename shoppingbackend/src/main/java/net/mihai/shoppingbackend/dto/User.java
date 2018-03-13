@@ -1,5 +1,8 @@
 package net.mihai.shoppingbackend.dto;
 
+
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +12,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user_detail")
-public class User {
+public class User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -21,12 +37,28 @@ public class User {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
+	@NotNull
+    @NotEmpty
+    @Email
 	private String email;
 	@Column(name = "contact_number")
 	private String contactNumber;
 	private String role;
 	private String password;
 	private boolean enabled;
+	
+	@Transient
+	private String confirmPassword;
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}

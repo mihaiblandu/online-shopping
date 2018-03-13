@@ -87,46 +87,35 @@ public class UserTestCase {
 	
 
 	// working for uni-directional
-/*
-	@Test
-	public void testAddAddress() {
-		user = userDAO.get(1);
-		
-		address = new Address();
-		address.setAddressLineOne("301/B Jadoo Society, King Uncle Nagar");
-		address.setAddressLineTwo("Near Store");
-		address.setCity("Mumbai");
-		address.setState("Maharashtra");
-		address.setCountry("India");
-		address.setPostalCode("400001");
-				
-		address.setUser(user);
-		// add the address
-		assertEquals("Failed to add the address!", true, userDAO.addAddress(address));	
-	}
-	
-*/
-	@Test
-	public void testUpdateCart() {
-		user = userDAO.getByEmail("hr@gmail.com");
-		
-		cart = user.getCart();
-		cart.setGrandTotal(10000);
-		cart.setCartLines(2);
-		assertEquals("Failed to update the cart!", true, userDAO.updateCart(cart));			
-	} 
-
-//	
 //	@Test
-//	public void testListAddresses() {
+//	public void testAddAddress() {
 //		user = userDAO.get(1);
-//		List<Address> billingAddresses = userDAO.listAddresses(user, true);
-//		List<Address> shippingAddresses = userDAO.listAddresses(user, false);
 //		
-//		assertEquals("Failed to fetch the billing address!", 1 , billingAddresses.size());
-//		assertEquals("Failed to fetch the shipping address!", 1 , shippingAddresses.size());
+//		address = new Address();
+//		address.setAddressLineOne("301/B Jadoo Society, King Uncle Nagar");
+//		address.setAddressLineTwo("Near Store");
+//		address.setCity("Calcutaa");
+//		address.setState("Maharashtra");
+//		address.setCountry("India");
+//		address.setPostalCode("400001");
+//				
+//		address.setUser(user);
+//		// add the address
+//		assertEquals("Failed to add the address!", true, userDAO.addAddress(address));	
 //	}
-	
+//	
+
+//	@Test
+//	public void testUpdateCart() {
+//		user = userDAO.getByEmail("hr@gmail.com");
+//		
+//		cart = user.getCart();
+//		cart.setGrandTotal(10000);
+//		cart.setCartLines(2);
+//		assertEquals("Failed to update the cart!", true, userDAO.updateCart(cart));			
+//	} 
+
+//
 }
 
 	

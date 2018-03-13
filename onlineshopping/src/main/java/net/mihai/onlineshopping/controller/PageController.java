@@ -48,8 +48,20 @@ public class PageController {
 		mv.addObject("userClickContact",true);
 		return mv;				
 	}	
+	@RequestMapping(value = "/testit")
+	public ModelAndView testit() {		
+		ModelAndView mv = new ModelAndView("page");		
+		mv.addObject("testit","Test it");
+		mv.addObject("userClicktestit",true);
+		return mv;				
+	}	
 	
-	
+	@RequestMapping(value = "/register")
+	public ModelAndView register() {		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("message", " Message send By controler");
+		return mv;				
+	}	
 	/*
 	 * Methods to load all the products and based on category
 	 * */

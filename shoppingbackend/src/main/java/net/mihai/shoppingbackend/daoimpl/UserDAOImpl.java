@@ -13,25 +13,17 @@ import net.mihai.shoppingbackend.dto.Cart;
 import net.mihai.shoppingbackend.dto.User;
 
 
+
 @Repository("userDAO")
 @Transactional
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
-	// return the user by id
-	@Override
-	public User get(int id) {
-		return sessionFactory.getCurrentSession().get(User.class, Integer.valueOf(id));
-	}
 
-	
-	
 	@Override
 	public User getByEmail(String email) {
-		String selectQuery = "FROM User WHERE email =:email";
+		String selectQuery = "FROM User WHERE email = :email";
 		try {
 		return sessionFactory
 				.getCurrentSession()
@@ -79,56 +71,67 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}	
 	
-	
-	
-	
-	@Override
-	public boolean updateCart(Cart cart) {
-		try {			
-			sessionFactory.getCurrentSession().update(cart);			
-			return true;
-		}
-		catch(Exception ex) {
-			return false;
-		}
-	}
-
-
 
 	@Override
-	public List<Address> listAddresses(User user, boolean isBilling) {
-		String selectQuery = "FROM Address WHERE user = :user AND billing = :isBilling";
+	public List<Address> listShippingAddresses(int userId) {
+		String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :isShipping ORDER BY id DESC";
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectQuery,Address.class)
-						.setParameter("user", user)
-						.setParameter("isBilling", isBilling)
+						.setParameter("userId", userId)
+						.setParameter("isShipping", true)
 							.getResultList();
 		
 	}
 
+	@Override
+	public Address getBillingAddress(int userId) {
+		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :isBilling";
+		try{
+		return sessionFactory
+				.getCurrentSession()
+					.createQuery(selectQuery,Address.class)
+						.setParameter("userId", userId)
+						.setParameter("isBilling", true)
+						.getSingleResult();
+		}
+		catch(Exception ex) {
+			return null;
+		}
+	}
 
+	@Override
+	public User get(int id) {
+		try {			
+			return sessionFactory.getCurrentSession().get(User.class, id);			
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
 
 	@Override
 	public Address getAddress(int addressId) {
+		try {			
+			return sessionFactory.getCurrentSession().get(Address.class, addressId);			
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public List<Address> listAddresses(User user, boolean isBilling) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
 	@Override
-	public Address getBillingAddress(int userId) {
+	public boolean updateCart(Cart cart) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public List<Address> listShippingAddresses(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

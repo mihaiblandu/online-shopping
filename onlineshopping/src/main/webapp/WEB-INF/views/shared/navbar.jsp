@@ -29,7 +29,15 @@
 				<li id="contact"><a href="${contextRoot}/contact">Contact</a></li>
 				<li id="manageProducts"><a href="${contextRoot}/manage/product">Manage
 						Products</a></li>
+				<li id="testit"><a href="${contextRoot}/testit">test it</a></li>
+				<li>              </li>
 				
+				<ul class="nav navbar-nav navbar-right">
+                    <li id="signup">
+                        <a href="${contextRoot}/register">Sign Up</a>
+                    </li>
+			    </ul>   
+
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
