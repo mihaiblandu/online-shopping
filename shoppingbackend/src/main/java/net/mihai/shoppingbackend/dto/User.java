@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -42,8 +43,11 @@ public class User implements Serializable{
     @Email
 	private String email;
 	@Column(name = "contact_number")
+	@NotBlank(message = "Please enter a Complete the field!")
 	private String contactNumber;
+	@NotBlank(message = "Please enter a Complete the field!")
 	private String role;
+	@NotBlank(message = "Please enter a Complete the field!")
 	private String password;
 	private boolean enabled;
 	

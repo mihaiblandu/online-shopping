@@ -18,7 +18,7 @@
 						<h4>Contact : <strong>${registerModel.user.contactNumber}</strong></h4>
 						<h4>Role : <strong>${registerModel.user.role}</strong></h4>
 						<p>
-							<a href="${flowExecutionUrl}&_eventId_start" class="btn btn-primary">Edit</a>
+							<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
 						</p>
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 					<div class="text-center">
 						<p>${registerModel.billing.addressLineOne}, </p>
 						<p>${registerModel.billing.addressLineTwo}, </p>
-						<p>${registerModel.billing.city} -  ${registerModel.billing.postalCode}, </p>
+						<p>${registerModel.billing.city} ,</p>
 						<p>${registerModel.billing.state}</p>
 						<p>${registerModel.billing.country}</p>
 						<p>
